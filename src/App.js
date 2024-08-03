@@ -3,22 +3,25 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import About from './pages/About';
-import AskQuestion from './pages/AskQuestion';
-import AstroSageMatrimony from './pages/AstroSageMatrimony';
-import AstroSageTv from './pages/AstroSageTv';
-import BabyName from './pages/BabyName';
-import BirthChart from './pages/BirthChart';
-import CareerCounselling from './pages/CareerCounselling';
-import CelebrityHoroscope from './pages/CelebrityHoroscope';
 import Contact from './pages/Contact';
-import GocharPhal from './pages/GocharPhal';
 import Home from './pages/Home';
-import HoroscopeMatching from './pages/HoroscopeMatching';
-import LifeReport from './pages/LifeReport';
-import PaidServices from './pages/PaidServices';
+import ChatWithAstrologer from './pages/homepage/ChatWithAstrologer';
+import ManualReports from './pages/homepage/ManualReports';
+import OnlineMeetingWithAstro from './pages/homepage/OnlineMeetingWithAstro';
+import TalkToAstrologerByPhone from './pages/homepage/TalkToAstrologerByPhone';
 import Services from './pages/Services';
-import YearAnalysis from './pages/YearAnalysis';
-
+import AskQuestion from './pages/services/AskQuestion';
+import AstroSageMatrimony from './pages/services/AstroSageMatrimony';
+import AstroSageTv from './pages/services/AstroSageTv';
+import BabyName from './pages/services/BabyName';
+import BirthChart from './pages/services/BirthChart';
+import CareerCounselling from './pages/services/CareerCounselling';
+import CelebrityHoroscope from './pages/services/CelebrityHoroscope';
+import GocharPhal from './pages/services/GocharPhal';
+import HoroscopeMatching from './pages/services/HoroscopeMatching';
+import LifeReport from './pages/services/LifeReport';
+import PaidServices from './pages/services/PaidServices';
+import YearAnalysis from './pages/services/YearAnalysis';
 // Add imports for other service components here...
 
 const App = () => {
@@ -42,6 +45,10 @@ const App = () => {
         <Route path="/life-report" element={<LifeReport />} />
         <Route path="/celebrity-horoscope" element={<CelebrityHoroscope />} />
         <Route path="/astrosage-tv" element={<AstroSageTv />} />
+        <Route path="/talk-to-astrologer-by-phone" element={<TalkToAstrologerByPhone />} />
+        <Route path="/chat-with-astrologer" element={<ChatWithAstrologer />} />
+        <Route path="/manual-reports" element={<ManualReports />} />
+        <Route path="/online-meeting" element={<OnlineMeetingWithAstro />} />
         
         {/* Add routes for other service components here... */}
       </Routes>

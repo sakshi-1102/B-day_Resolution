@@ -18,6 +18,26 @@ const services = [
   { path: '/tv', icon: <FaTv />, title: 'AstroSage TV' }
 ];
 
+const plans = [
+  {
+    name: 'Star',
+    price: '30$',
+    features: ['Personal Life Advice', 'Forecast For Month'],
+    unavailable: ['Natal Chart', 'Forecast For Year'],
+  },
+  {
+    name: 'Sky',
+    price: '50$',
+    features: ['Personal Life Advice', 'Forecast For Month', 'Natal Chart'],
+    unavailable: ['Forecast For Year'],
+  },
+  {
+    name: 'Space',
+    price: '80$',
+    features: ['Personal Life Advice', 'Forecast For Month', 'Natal Chart', 'Forecast For Year'],
+  },
+];
+
 const Services = () => {
   return (
     <ServicesPage>
@@ -32,6 +52,27 @@ const Services = () => {
           </Link>
         ))}
       </ServicesGrid>
+      <PricingSection>
+        <PricingTitle>Our Pricing Plans</PricingTitle>
+        <PlansGrid>
+          {plans.map((plan, index) => (
+            <PlanCard key={index}>
+              <PlanHeader>{plan.name}</PlanHeader>
+              <PlanPrice>{plan.price}</PlanPrice>
+              <PlanDetails>
+                {plan.features.map((feature, i) => (
+                  <Feature key={i}>{feature}</Feature>
+                ))}
+                {plan.unavailable &&
+                  plan.unavailable.map((feature, i) => (
+                    <UnavailableFeature key={i}>{feature}</UnavailableFeature>
+                  ))}
+              </PlanDetails>
+              <GetStartedButton>Get Started</GetStartedButton>
+            </PlanCard>
+          ))}
+        </PlansGrid>
+      </PricingSection>
     </ServicesPage>
   );
 };
@@ -52,6 +93,7 @@ const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 `;
 
 const ServiceCard = styled.div`
@@ -70,12 +112,81 @@ const Icon = styled.div`
   font-size: 3rem;
   color: #4b0082;
   margin-bottom: 1rem;
+  padding: 10px; /* Add padding to the icon */
 `;
 
 const CardTitle = styled.h2`
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   color: #333;
+`;
+
+const PricingSection = styled.div`
+  padding: 2rem;
+  text-align: center;
+  background: #f9f9f9;
+`;
+
+const PricingTitle = styled.h2`
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+`;
+
+const PlansGrid = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+`;
+
+const PlanCard = styled.div`
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+`;
+
+const PlanHeader = styled.h2`
+  font-size: 1.5rem;
+  color: #4b0082;
+  margin-bottom: 1rem;
+`;
+
+const PlanPrice = styled.div`
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+`;
+
+const PlanDetails = styled.div`
+  text-align: left;
+  margin-bottom: 1rem;
+`;
+
+const Feature = styled.p`
+  font-size: 1rem;
+  color: #333;
+`;
+
+const UnavailableFeature = styled.p`
+  font-size: 1rem;
+  color: #ccc;
+  text-decoration: line-through;
+`;
+
+const GetStartedButton = styled.button`
+  background: #4b0082;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  &:hover {
+    background: #333;
+  }
 `;
 
 export default Services;

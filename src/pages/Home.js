@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Slider from '../components/Slider';
 
 const Home = () => {
   return (
     <Container>
-      
       <HeroSection>
-        <HeroImage src="/hero-image.jpg" alt="Astrology" />
+        <HeroVideo autoPlay muted loop>
+          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.ogg" type="video/ogg" />
+          Your browser does not support the video tag.
+        </HeroVideo>
         <HeroContent>
           <h1>Unlock Your Future with Expert Astrological Guidance</h1>
           <p>Discover the wonders of astrology and embark on a journey of self-discovery.</p>
-          <CTAButton>Get Started</CTAButton>
+          <CTAButton to="/login">Get Started</CTAButton>
         </HeroContent>
       </HeroSection>
       <IntroSection>
@@ -28,7 +31,7 @@ const Home = () => {
           </ZodiacItem>
         ))}
       </ZodiacGrid>
-      <Slider />
+      {/* <Slider /> */}
       <MainFeatures>
         <Feature>
           <h2>Talk to Astrologer by Phone</h2>
@@ -85,7 +88,6 @@ const Home = () => {
           <BlogLink to="/blogs">Read More</BlogLink>
         </BlogHighlight>
       </BlogHighlightsSection>
-      
     </Container>
   );
 };
@@ -121,7 +123,7 @@ const HeroSection = styled.section`
   padding: 40px 0;
 `;
 
-const HeroImage = styled.img`
+const HeroVideo = styled.video`
   width: 50%;
   border-radius: 10px;
 `;
@@ -141,7 +143,7 @@ const HeroContent = styled.div`
   }
 `;
 
-const CTAButton = styled.button`
+const CTAButton = styled(Link)`
   background-color: #e67e22;
   color: white;
   border: none;
@@ -149,6 +151,7 @@ const CTAButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   border-radius: 5px;
+  text-decoration: none;
 
   &:hover {
     background-color: #d35400;
@@ -165,7 +168,7 @@ const IntroSection = styled.div`
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: #dcdcdc;
   }
 `;
@@ -175,6 +178,10 @@ const ZodiacGrid = styled.div`
   grid-template-columns: repeat(6, 1fr); /* 6 items per row */
   gap: 20px;
   padding: 20px 0;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row for medium screens */
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr); /* 3 items per row for smaller screens */
@@ -200,9 +207,10 @@ const ZodiacItem = styled.div`
 
 const ZodiacImage = styled.img`
   width: 100%;
-  height: 100px;
-  object-fit: contain;
+  height: 120px;
+  object-fit: cover;
   margin-bottom: 10px;
+  border-radius: 5px;
 `;
 
 const ZodiacName = styled.h3`
@@ -213,7 +221,7 @@ const ZodiacName = styled.h3`
 const ZodiacDate = styled.p`
   margin: 0;
   font-size: 0.9rem;
-  color: #cccccc;
+  color: #e67e22;
 `;
 
 const MainFeatures = styled.section`
@@ -235,74 +243,102 @@ const MainFeatures = styled.section`
 `;
 
 const Feature = styled.div`
-  flex: 1 1 45%;
   background-color: #3c1a57;
   padding: 20px;
-  margin: 10px;
   border-radius: 10px;
-  text-align: center;
+  width: 45%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #472668;
+  }
 `;
 
 const FeatureLink = styled(Link)`
   color: #e67e22;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: #d35400;
   }
 `;
 
 const TestimonialsSection = styled.section`
-  text-align: center;
+  background-color: #3c1a57;
+  padding: 20px;
+  border-radius: 10px;
   margin: 40px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
   }
 `;
 
 const Testimonial = styled.div`
-  background-color: #3c1a57;
+  background-color: #472668;
   padding: 20px;
-  margin: 20px;
   border-radius: 10px;
-  font-style: italic;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+  }
 `;
 
 const DailyUpdatesSection = styled.section`
-  text-align: center;
+  background-color: #3c1a57;
+  padding: 20px;
+  border-radius: 10px;
   margin: 40px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
   }
 `;
 
 const DailyUpdate = styled.div`
-  background-color: #3c1a57;
+  background-color: #472668;
   padding: 20px;
-  margin: 20px;
   border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+  }
 `;
 
 const BlogHighlightsSection = styled.section`
-  text-align: center;
+  background-color: #3c1a57;
+  padding: 20px;
+  border-radius: 10px;
   margin: 40px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
   }
 `;
 
 const BlogHighlight = styled.div`
-  background-color: #3c1a57;
+  background-color: #472668;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   h3 {
     font-size: 1.5rem;
@@ -310,7 +346,7 @@ const BlogHighlight = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #dcdcdc;
     margin-bottom: 20px;
   }
@@ -318,14 +354,12 @@ const BlogHighlight = styled.div`
 
 const BlogLink = styled(Link)`
   color: #e67e22;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: #d35400;
   }
 `;
-
-
 
 export default Home;

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const slides = [
-  { image: '/SliderImage1.jpg', caption: 'Unlock the Secrets of Your Stars' },
-  { image: '/SliderImage2.jpg', caption: 'Discover Your True Self' },
-  { image: '/SliderImage3.jpg', caption: 'Navigate Your Future with Confidence' },
+  { image: '/slider.jpg', caption: 'Unlock the Secrets of Your Stars' },
+  { image: '/slider2.jpg', caption: 'Discover Your True Self' },
+  { image: '/slider4.jpg', caption: 'Navigate Your Future with Confidence' },
 ];
 
 const Slider = () => {
