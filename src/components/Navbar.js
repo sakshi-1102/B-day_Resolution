@@ -6,18 +6,21 @@ import styled from 'styled-components';
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => setMenuOpen(!isMenuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <Nav>
       <Logo>
         <Link to="/">AstroApp</Link>
       </Logo>
       <NavMenu isOpen={isMenuOpen}>
-        <NavItem><Link to="/">Home</Link></NavItem>
-        <NavItem><Link to="/services">Services</Link></NavItem>
-        <NavItem><Link to="/about">About</Link></NavItem>
-        <NavItem><Link to="/contact">Contact</Link></NavItem>
+        <NavItem onClick={closeMenu}><Link to="/">Home</Link></NavItem>
+        <NavItem onClick={closeMenu}><Link to="/services">Services</Link></NavItem>
+        <NavItem onClick={closeMenu}><Link to="/about">About</Link></NavItem>
+        <NavItem onClick={closeMenu}><Link to="/contact">Contact</Link></NavItem>
       </NavMenu>
-      <MenuToggle onClick={() => setMenuOpen(!isMenuOpen)}>
+      <MenuToggle onClick={toggleMenu}>
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </MenuToggle>
     </Nav>
@@ -58,19 +61,20 @@ const NavMenu = styled.div`
     background: #2b0f3e; /* Match background */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 250px;
+    width: 200px; /* Reduced width */
     z-index: 1000;
+    padding: 0; /* Reduced padding */
   }
 `;
 
 const NavItem = styled.div`
-  margin: 0 1rem;
+  margin: 0;
   a {
     color: white;
     text-decoration: none;
     font-weight: 500;
     display: block;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem; /* Reduced padding */
     transition: color 0.3s ease, background 0.3s ease;
     border-radius: 8px;
     &:hover {
@@ -79,9 +83,7 @@ const NavItem = styled.div`
     }
   }
   @media (max-width: 768px) {
-    margin: 0;
     text-align: center;
-    padding: 1rem;
     border-bottom: 1px solid #444;
     &:last-child {
       border-bottom: none;

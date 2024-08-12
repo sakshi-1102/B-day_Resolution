@@ -13,6 +13,7 @@ const Home = () => {
           Your browser does not support the video tag.
         </HeroVideo>
         <HeroContent>
+          
           <h1>Unlock Your Future with Expert Astrological Guidance</h1>
           <p>Discover the wonders of astrology and embark on a journey of self-discovery.</p>
           <CTAButton to="/login">Get Started</CTAButton>
@@ -25,11 +26,13 @@ const Home = () => {
       <ZodiacGrid>
         {zodiacSigns.map((sign, index) => (
           <ZodiacItem key={index}>
-            <ZodiacImage src={sign.image} alt={sign.name} />
-            <ZodiacName>{sign.name}</ZodiacName>
-            <ZodiacDate>{sign.date}</ZodiacDate>
+            <Link to={`/${sign.name.toLowerCase()}`}>
+              <ZodiacImage src={sign.image} alt={sign.name} />
+              <ZodiacName>{sign.name}</ZodiacName>
+              <ZodiacDate>{sign.date}</ZodiacDate>
+            </Link>
           </ZodiacItem>
-        ))}
+           ))}
       </ZodiacGrid>
       {/* <Slider /> */}
       <MainFeatures>
@@ -46,7 +49,7 @@ const Home = () => {
         <Feature>
           <h2>Manual Reports</h2>
           <p>Receive detailed manual reports on various aspects of your life.</p>
-          <FeatureLink to="/manual-report">Learn More</FeatureLink>
+          <FeatureLink to="/manual-reports">Learn More</FeatureLink>
         </Feature>
         <Feature>
           <h2>Online Meeting with Astrologer</h2>
@@ -80,12 +83,12 @@ const Home = () => {
         <BlogHighlight>
           <h3>Understanding Your Zodiac Sign</h3>
           <p>Learn about the traits and characteristics of your zodiac sign.</p>
-          <BlogLink to="/blogs">Read More</BlogLink>
+          <BlogLink to="/Understand-Zodiac">Read More</BlogLink>
         </BlogHighlight>
         <BlogHighlight>
           <h3>Astrology and Relationships</h3>
           <p>Discover how astrology can influence your relationships.</p>
-          <BlogLink to="/blogs">Read More</BlogLink>
+          <BlogLink to="/astrology-and-relationships">Read More</BlogLink>
         </BlogHighlight>
       </BlogHighlightsSection>
     </Container>
@@ -203,6 +206,19 @@ const ZodiacItem = styled.div`
   &:hover {
     transform: translateY(-10px);
   }
+     a {
+    text-decoration: none; /* Remove underline */
+    color: #e67e22; /* Set initial color */
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: #ffd700; /* Color on hover */
+    }
+
+    &:visited {
+      color: #e67e22; /* Color after visit (ensure it matches your design) */
+    }
+  }
 `;
 
 const ZodiacImage = styled.img`
@@ -216,6 +232,7 @@ const ZodiacImage = styled.img`
 const ZodiacName = styled.h3`
   margin: 10px 0;
   font-size: 1.2rem;
+  color : white;
 `;
 
 const ZodiacDate = styled.p`
