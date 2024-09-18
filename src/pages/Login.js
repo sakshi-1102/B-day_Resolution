@@ -1,24 +1,47 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Add authentication logic here
 
-    // Redirect to another page upon successful login
-    navigate('/dashboard'); // Example: redirect to a dashboard page
+    if (!email || !password) {
+      setError('Please fill in both email and password.');
+      return;
+    }
+
+    const userData = { email, password };
+
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        navigate('/'); // Redirect to home page
+      } else {
+        setError(data.message || 'Login failed. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    }
   };
 
   return (
     <LoginContainer>
-      <LoginForm onSubmit={handleSubmit}>
+      <LoginForm onSubmit={handleLogin}>
         <Title>Login</Title>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <Input
           type="email"
           placeholder="Email"
@@ -34,6 +57,12 @@ const Login = () => {
           required
         />
         <Button type="submit">Login</Button>
+        <RegisterLink>
+          Don't have an account? <StyledLink to="/register">Register here</StyledLink>
+        </RegisterLink>
+        <ForgotPasswordLink>
+          <StyledLink to="/forgot-password">Forgot Password?</StyledLink>
+        </ForgotPasswordLink>
       </LoginForm>
     </LoginContainer>
   );
@@ -44,47 +73,86 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
 `;
 
 const LoginForm = styled.form`
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   color: #333;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
+  padding: 0.875rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ced4da;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.1);
+    outline: none;
+  }
 `;
 
 const Button = styled.button`
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.875rem;
   background-color: #e67e22;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     background-color: #d35400;
+    box-shadow: 0 8px 16px rgba(211, 84, 0, 0.3);
   }
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const RegisterLink = styled.div`
+  margin-top: 1rem;
+  text-align: center;
+`;
+
+const StyledLink = styled(Link)`
+  color: #e67e22;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ForgotPasswordLink = styled.div`
+  margin-top: 1rem;
+  text-align: center;
 `;
 
 export default Login;

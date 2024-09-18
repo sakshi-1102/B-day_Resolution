@@ -42,7 +42,7 @@ const Logo = styled.div`
   font-size: 2rem;
   font-weight: bold;
   a {
-    color: #e67e22; /* Accent color */
+    color: #ff2400; /* Accent color */
     text-decoration: none;
     &:hover {
       color: #ffd700; /* Hover effect */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Footer from './components/Footer';
@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login'; // Import the Login page
 import ManualReports from './pages/ManualReports';
 import OnlineMeetingWithAstrologer from './pages/OnlineMeetingWithAstrologer';
+import Register from './pages/Register';
 import Services from './pages/Services';
 import AskQuestion from './pages/services/AskQuestion';
 import AstroSageMatrimony from './pages/services/AstroSageMatrimony';
@@ -43,7 +44,21 @@ import Virgo from './pages/zodiac/Virgo';
 const App = () => {
   return (
     <Router>
-      <Navbar />
+      <MainLayout />
+    </Router>
+  );
+};
+
+const MainLayout = () => {
+  const location = useLocation();
+
+  // Define routes where navbar and footer should not be shown
+  const hideNavbarAndFooterRoutes = ['/login', '/register'];
+
+  return (
+    <>
+      {/* Conditionally render the navbar and footer */}
+      {!hideNavbarAndFooterRoutes.includes(location.pathname) && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} /> {/* Route for Login */}
@@ -80,10 +95,10 @@ const App = () => {
         <Route path="/pisces" element={<Pisces />} />
         <Route path="/Understand-Zodiac" element={<UnderstandZodiac />} />
         <Route path="/astrology-and-relationships" element={<AstrologyAndRelationships />} />
-
+        <Route path="/register" element={<Register />} />
       </Routes>
-      <Footer />
-    </Router>
+      {!hideNavbarAndFooterRoutes.includes(location.pathname) && <Footer />}
+    </>
   );
 };
 

@@ -110,7 +110,7 @@ const ServiceCard = styled.div`
 
 const Icon = styled.div`
   font-size: 3rem;
-  color: #4b0082;
+  color: #ff2400;
   margin-bottom: 1rem;
   padding: 10px; /* Add padding to the icon */
 `;
@@ -150,7 +150,7 @@ const PlanCard = styled.div`
 
 const PlanHeader = styled.h2`
   font-size: 1.5rem;
-  color: #4b0082;
+  color: #ff2400;
   margin-bottom: 1rem;
 `;
 
@@ -177,7 +177,7 @@ const UnavailableFeature = styled.p`
 `;
 
 const GetStartedButton = styled.button`
-  background: #4b0082;
+  background: #ff2400;
   color: #fff;
   padding: 0.5rem 1rem;
   border: none;

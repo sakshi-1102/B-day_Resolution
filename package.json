@@ -1,6 +1,6 @@
 {
   "name": "astrologer-website",
-  "homepage": "https://locotsd.soft2technologies.com/",
+  "homepage": "https://locotsd.soft2technologies.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

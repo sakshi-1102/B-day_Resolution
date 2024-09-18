@@ -18,12 +18,12 @@ const About = () => {
         <SectionTitle>Our Team</SectionTitle>
         <TeamGrid>
           <TeamMember>
-            <img src="https://via.placeholder.com/150" alt="Astrologer 1" />
+            <img src="/Astro1.jpg" alt="Astrologer 1" />
             <h3>Astrologer 1</h3>
             <p>With over 20 years of experience, Astrologer 1 specializes in Vedic astrology and horoscope matching.</p>
           </TeamMember>
           <TeamMember>
-            <img src="https://via.placeholder.com/150" alt="Astrologer 2" />
+            <img src="/Astro2.jpg" alt="Astrologer 2" />
             <h3>Astrologer 2</h3>
             <p>Astrologer 2 is an expert in Western astrology and has a keen interest in numerology.</p>
           </TeamMember>
@@ -65,58 +65,95 @@ const AboutPage = styled.div`
   padding: 2rem;
   text-align: center;
   background: #f9f9f9;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
 `;
 
 const Title = styled.h1`
   margin-bottom: 1rem;
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 3rem;
+  color: #e67e22;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 `;
 
 const Introduction = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 2rem;
+  color: #666;
 `;
 
 const Section = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #e67e22;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 `;
 
 const TeamGrid = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
 `;
 
 const TeamMember = styled.div`
   text-align: center;
+  width: 200px;
 
   img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1rem;
+    border: 4px solid #e67e22;
+    transition: transform 0.3s;
+  }
+
+  img:hover {
+    transform: scale(1.1);
   }
 
   h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #333;
   }
 
   p {
     font-size: 1rem;
-    color: #555;
+    color: #777;
   }
 `;
 
 const ContactInfo = styled.div`
   font-size: 1.2rem;
+  color: #666;
 
   p {
     margin: 0.5rem 0;
+  }
+
+  p:first-child {
+    font-weight: bold;
   }
 `;
 
@@ -126,20 +163,27 @@ const FAQSection = styled.div`
   h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: #e67e22;
+    font-weight: 600;
   }
 `;
 
 const FAQ = styled.div`
   margin-bottom: 1.5rem;
+  text-align: left;
 `;
 
 const Question = styled.p`
   font-weight: bold;
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
 `;
 
 const Answer = styled.p`
   margin-bottom: 0;
+  font-size: 1rem;
+  color: #555;
 `;
 
 export default About;

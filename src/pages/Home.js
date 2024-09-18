@@ -13,7 +13,6 @@ const Home = () => {
           Your browser does not support the video tag.
         </HeroVideo>
         <HeroContent>
-          
           <h1>Unlock Your Future with Expert Astrological Guidance</h1>
           <p>Discover the wonders of astrology and embark on a journey of self-discovery.</p>
           <CTAButton to="/login">Get Started</CTAButton>
@@ -32,9 +31,8 @@ const Home = () => {
               <ZodiacDate>{sign.date}</ZodiacDate>
             </Link>
           </ZodiacItem>
-           ))}
+        ))}
       </ZodiacGrid>
-      {/* <Slider /> */}
       <MainFeatures>
         <Feature>
           <h2>Talk to Astrologer by Phone</h2>
@@ -113,10 +111,11 @@ const zodiacSigns = [
 
 // Styled Components
 const Container = styled.div`
-  background-color: #2b0f3e;
-  color: white;
+  background-color: #FFFAFA; /* White background */
+  color: #333333;
   min-height: 100vh;
   padding: 20px;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const HeroSection = styled.section`
@@ -138,16 +137,18 @@ const HeroContent = styled.div`
   h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #2E073F; /* Orange color */
   }
 
   p {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    color: #2E073F;
   }
 `;
 
 const CTAButton = styled(Link)`
-  background-color: #e67e22;
+  background-color: #ff2400; /* Orange color */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -155,9 +156,10 @@ const CTAButton = styled(Link)`
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
+  font-weight: bold;
 
   &:hover {
-    background-color: #d35400;
+    background-color: #d21e00; /* Darker orange on hover */
   }
 `;
 
@@ -168,11 +170,12 @@ const IntroSection = styled.div`
   h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    color: #2E073F; /* Orange color */
   }
 
   p {
     font-size: 1.8rem;
-    color: #dcdcdc;
+    color: #2E073F;
   }
 `;
 
@@ -198,7 +201,8 @@ const ZodiacGrid = styled.div`
 const ZodiacItem = styled.div`
   text-align: center;
   padding: 20px;
-  background-color: #3c1a57;
+  background-color: #ffffff;
+  border: 1px solid #2E073F; /* Orange border */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -206,152 +210,134 @@ const ZodiacItem = styled.div`
   &:hover {
     transform: translateY(-10px);
   }
-     a {
+
+  a {
     text-decoration: none; /* Remove underline */
-    color: #e67e22; /* Set initial color */
+    color: #2E073F; /* Orange color */
     transition: color 0.5s ease;
 
     &:hover {
-      color: #ffd700; /* Color on hover */
-    }
-
-    &:visited {
-      color: #e67e22; /* Color after visit (ensure it matches your design) */
+      color: #d21e00; /* Darker orange on hover */
     }
   }
 `;
 
 const ZodiacImage = styled.img`
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
+  width: 100px;
+  height: 100px;
   margin-bottom: 10px;
-  border-radius: 5px;
 `;
 
 const ZodiacName = styled.h3`
-  margin: 10px 0;
   font-size: 1.2rem;
-  color : white;
+  color: #333333;
+  margin-bottom: 5px;
 `;
 
 const ZodiacDate = styled.p`
-  margin: 0;
-  font-size: 0.9rem;
-  color: #e67e22;
+  font-size: 1rem;
+  color: #666666;
 `;
 
 const MainFeatures = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 40px 0;
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  p {
-    font-size: 1.1rem;
-    color: #dcdcdc;
-    margin-bottom: 20px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 const Feature = styled.div`
-  background-color: #3c1a57;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  width: 45%;
-  margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 
   &:hover {
-    background-color: #472668;
+    transform: translateY(-10px);
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    color: #2E073F; /* Orange color */
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 20px;
   }
 `;
 
 const FeatureLink = styled(Link)`
-  color: #e67e22;
-  font-weight: bold;
+  font-size: 1rem;
+  color: #ff2400; /* Orange color */
   text-decoration: none;
+  transition: color 0.5s ease;
 
   &:hover {
-    color: #d35400;
+    color: #d21e00; /* Darker orange on hover */
   }
 `;
 
 const TestimonialsSection = styled.section`
-  background-color: #3c1a57;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 40px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
+  background-color: #f9f9f9;
 
   h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    color: #ff2400; /* Orange color */
     text-align: center;
+    margin-bottom: 30px;
   }
 `;
 
 const Testimonial = styled.div`
-  background-color: #472668;
+  text-align: center;
   padding: 20px;
+  background-color: #ffffff;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  p {
-    font-size: 1.1rem;
-    color: #dcdcdc;
-  }
 `;
 
 const DailyUpdatesSection = styled.section`
-  background-color: #3c1a57;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 40px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
 
   h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    color: #ff2400; /* Orange color */
     text-align: center;
+    margin-bottom: 30px;
   }
 `;
 
 const DailyUpdate = styled.div`
-  background-color: #472668;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  p {
-    font-size: 1.1rem;
-    color: #dcdcdc;
-  }
 `;
 
 const BlogHighlightsSection = styled.section`
-  background-color: #3c1a57;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 40px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
 
   h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    color: #ff2400; /* Orange color */
     text-align: center;
+    margin-bottom: 30px;
   }
 `;
 
 const BlogHighlight = styled.div`
-  background-color: #472668;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -359,23 +345,25 @@ const BlogHighlight = styled.div`
 
   h3 {
     font-size: 1.5rem;
+    color: #2E073F; /* Orange color */
     margin-bottom: 10px;
   }
 
   p {
-    font-size: 1.1rem;
-    color: #dcdcdc;
+    font-size: 1rem;
+    color: #666666;
     margin-bottom: 20px;
   }
 `;
 
 const BlogLink = styled(Link)`
-  color: #e67e22;
-  font-weight: bold;
+  font-size: 1rem;
+  color: #ff2400; /* Orange color */
   text-decoration: none;
+  transition: color 0.5s ease;
 
   &:hover {
-    color: #d35400;
+    color: #d21e00; /* Darker orange on hover */
   }
 `;
 
